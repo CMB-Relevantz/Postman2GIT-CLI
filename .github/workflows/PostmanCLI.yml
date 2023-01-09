@@ -1,0 +1,24 @@
+name: Automated API tests using Postman CLI
+
+on: 
+
+  push:
+
+#name: example1-cron-action
+#on:
+  schedule:
+    - cron:  '*/5 * * * *'    # At every 5th minute
+
+jobs:
+  automated-api-tests:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Postman CLI
+        run: |
+          powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
+      - name: Login to Postman CLI
+        run: postman login --with-api-key PMAK-63bbc695233a257041d2f758-aa7bf5599314ea7d31dabeedb7dc593326
+      - name: Run API tests
+        run: |
+          postman collection run "24862745-d96af6d7-fb02-46ef-a88c-c3dbf676233c"
