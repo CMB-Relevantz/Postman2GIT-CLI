@@ -1,4 +1,4 @@
-name: Automated API tests using Postman CLI
+name: Postman2Git-CLI
 
 on: 
 
@@ -7,7 +7,7 @@ on:
 #name: Schedule JOBS
 #on:
   schedule:
-    - cron:  '*/6 * * * *'    # At every 5th minute
+    - cron:  '*/5 * * * *'    # At every 5th minute
 
 # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
